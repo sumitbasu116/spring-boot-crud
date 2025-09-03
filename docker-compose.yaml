@@ -6,7 +6,9 @@ services:
       MYSQL_DATABASE: 'emp'
     ports:
       - '3307:3306'
-      
+    volumes:
+      - mysql-backup:/var/lib/mysql
+
   application:
     build:
       context: .
@@ -20,3 +22,6 @@ services:
       SPRING_DATASOURCE_URL: 'jdbc:mysql://mysql-db:3306/emp'
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: 'Sumit@123'
+
+volumes:
+  mysql-backup:
