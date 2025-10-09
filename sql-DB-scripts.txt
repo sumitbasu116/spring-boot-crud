@@ -1,0 +1,6 @@
+CREATE TABLE `employee` (
+  `employee_id` bigint(20) NOT NULL,
+  `employee_name` varchar(255) DEFAULT NULL,
+  `employee_salary` float NOT NULL,
+  PRIMARY KEY (`employee_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
