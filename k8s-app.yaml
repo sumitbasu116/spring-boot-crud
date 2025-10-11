@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-crud-deployment
+spec:
+  selector:
+    matchLabels:
+      app: springboot-k8s-crud-db
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: springboot-k8s-crud-db
+    spec:
+      containers:
+        - name: springboot-k8s-crud
+          image: employee-service:1.0
+          ports:
+            - containerPort: 8085
+          env:
+            - name: DB_HOST
+              value: mysql
+            - name: DB_NAME
+              value: emp
+            - name: DB_USERNAME
+              value: root
+            - name: DB_PASSWORD
+              value: Sumit@123
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-k8s-crud-db-service
+spec:
+  selector:
+    app: springboot-k8s-crud-db
+  ports:
+    - protocol: TCP
+      port: 9292
+      targetPort: 8085
+  type: NodePort
