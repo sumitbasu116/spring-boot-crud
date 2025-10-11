@@ -19,13 +19,25 @@ spec:
             - containerPort: 8085
           env:
             - name: DB_HOST
-              value: mysql
+              valueFrom:
+                configMapKeyRef:
+                  name: db-config
+                  key: host
             - name: DB_NAME
-              value: emp
+              valueFrom:
+                configMapKeyRef:
+                  name: db-config
+                  key: dbName
             - name: DB_USERNAME
-              value: root
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: username
             - name: DB_PASSWORD
-              value: Sumit@123
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: password
 ---
 
 apiVersion: v1
