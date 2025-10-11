@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-name: db-config
+  name: db-config
 data:
-host: mysql
-dbName: emp
+  host: mysql
+  dbName: emp
