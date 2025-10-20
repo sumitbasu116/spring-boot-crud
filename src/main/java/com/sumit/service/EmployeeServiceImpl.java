@@ -23,12 +23,12 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Override
     public List<Employee> fetchAllEmployees() {
-        List<Employee> allEmployees = employeeRepository.findAll();
+        List<Employee> allEmployees = (List<Employee>) employeeRepository.findAll();
         return allEmployees;
     }
 
     @Override
-    public Employee getEmployeeById(Long id) {
+    public Employee getEmployeeById(String id) {
         Optional<Employee> employee = employeeRepository.findById(id);
         if (employee.isPresent()) {
             return employee.get();
@@ -37,7 +37,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public Employee updateEmployeeById(Long id, Employee employee) {
+    public Employee updateEmployeeById(String id, Employee employee) {
         Optional<Employee> employee1 = employeeRepository.findById(id);
 
         if (employee1.isPresent()) {
@@ -54,12 +54,4 @@ public class EmployeeServiceImpl implements EmployeeService{
         return null;
     }
 
-    @Override
-    public String deleteDepartmentById(Long id) {
-        if (employeeRepository.findById(id).isPresent()) {
-            employeeRepository.deleteById(id);
-            return "Employee deleted successfully";
-        }
-        return "No such employee in the database";
-    }
 }

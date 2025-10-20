@@ -1,11 +1,11 @@
 package com.sumit.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.socialsignin.spring.data.dynamodb.repository.EnableScan;
+import org.springframework.data.repository.CrudRepository;
 
 import com.sumit.entity.Employee;
 
-@Repository
-public interface EmployeeRepository extends JpaRepository<Employee, Long> {
-
+@EnableScan
+public interface EmployeeRepository extends CrudRepository<Employee,String> {
+	
 }
