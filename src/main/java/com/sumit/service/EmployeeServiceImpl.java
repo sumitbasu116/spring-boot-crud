@@ -23,12 +23,12 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Override
     public List<Employee> fetchAllEmployees() {
-        List<Employee> allEmployees = (List<Employee>) employeeRepository.findAll();
+    	List<Employee> allEmployees = employeeRepository.findAll();
         return allEmployees;
     }
 
     @Override
-    public Employee getEmployeeById(String id) {
+    public Employee getEmployeeById(Long id) {
         Optional<Employee> employee = employeeRepository.findById(id);
         if (employee.isPresent()) {
             return employee.get();
@@ -37,7 +37,7 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
-    public Employee updateEmployeeById(String id, Employee employee) {
+    public Employee updateEmployeeById(Long id, Employee employee) {
         Optional<Employee> employee1 = employeeRepository.findById(id);
 
         if (employee1.isPresent()) {

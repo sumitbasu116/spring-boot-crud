@@ -10,8 +10,8 @@ public interface EmployeeService {
 
     List<Employee> fetchAllEmployees();
 
-    Employee getEmployeeById(String id);
+    Employee getEmployeeById(Long id);
 
-    Employee updateEmployeeById(String id, Employee employee);
+    Employee updateEmployeeById(Long id, Employee employee);
 
 }
